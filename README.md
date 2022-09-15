@@ -6,13 +6,13 @@ This tool will allow you instant access to the Nucle Cloud API service in a Pyth
  
 ## Instalation 
 
-    pip install nucle.cloud
+`pip install nucle.cloud`
 
 
 ## Content
 First thing to do when using the library is to import it like bellow
 
-    from  nucle.cloud  import *
+`from Nucle.Cloud import *`
 
 ### User
 - `Create(projectId,userName,email,password)`  
@@ -79,6 +79,11 @@ Delete variable, return deleted variable (VariableModel)
 - `Count(userToken,presetId, searchValue)`  
 Count of variables without pagination applied
 
+## Example
+Login a user and print its token.   
+`from Nucle.Cloud import *`
+`loginResult = User.Login('b943b785-********************8ec173','draga@gmail.com', 'P@ssw0rd')`
+`print(loginResult.userToken)`
 
 ## GitHub 
 
