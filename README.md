@@ -81,9 +81,11 @@ Count of variables without pagination applied
 
 ## Example
 Login a user and print its token.   
-`from Nucle.Cloud import *`
-`loginResult = User.Login('b943b785-********************8ec173','draga@gmail.com', 'P@ssw0rd')`
-`print(loginResult.userToken)`
+```
+from Nucle.Cloud import *
+loginResult = User.Login('b943b785-********************8ec173','draga@gmail.com', 'P@ssw0rd')
+print(loginResult.userToken)
+```
 
 ## GitHub 
 
