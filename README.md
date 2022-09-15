@@ -80,11 +80,23 @@ Delete variable, return deleted variable (VariableModel)
 Count of variables without pagination applied
 
 ## Example
+
+Create a new user and print its id.   
+```
+from Nucle.Cloud import *
+
+projectId ='b943b785-********************8ec173'
+newUser = User.Create(projectId,'ross88@gmail.com', 'P@ssw0rd', 'ross')
+print('New user id= '+newUser.id)
+```
+
 Login a user and print its token.   
 ```
 from Nucle.Cloud import *
-loginResult = User.Login('b943b785-********************8ec173','draga@gmail.com', 'P@ssw0rd')
-print(loginResult.userToken)
+
+projectId ='b943b785-********************8ec173'
+loginResult = User.Login(projectId,'ross88@gmail.com', 'P@ssw0rd')
+print('User token= '+loginResult.userToken)
 ```
 
 ## GitHub 
