@@ -527,7 +527,7 @@ class Variable:
             print(f'Other error occurred: {err}')
 
     @staticmethod
-    def GetList(userToken,presetId,skip,take,orderType, searchValue) -> Models.VariablesModel:
+    def GetList(userToken,presetId,skip=0,take=10,orderType=0, searchValue=None) -> Models.VariablesModel:
         URL = "https://api.nucle.cloud/v1/variable/list"
         Headers = {
             "Content-Type": "application/json; charset=utf-8", "userToken": userToken}
@@ -554,7 +554,7 @@ class Variable:
             print(f'Other error occurred: {err}')
 
     @staticmethod
-    def Count(userToken,presetId, searchValue) -> str:
+    def Count(userToken,presetId, searchValue) -> int:
         URL = "https://api.nucle.cloud/v1/variable/count"
         Headers = {
             "Content-Type": "application/json; charset=utf-8", "userToken": userToken}
