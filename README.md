@@ -75,7 +75,7 @@ Get preset by name, return (PresetModel).
 Delete variable, return deleted variable (VariableModel).  
 - `GetList(userToken,presetId,skip,take,orderType, searchValue)`  
  Get variables list, return (VariablesModel).  
- *orderType* is enum  HighToLow=0, LowToHigh=1, Newest=2, Oldest=3.  
+ *orderType:* enum  HighToLow=0, LowToHigh=1, Newest=2, Oldest=3.  
  *VariablesModel:* has a list of  (VariableModel) and totalCount of variables without pagination applied.  
 - `Count(userToken,presetId, searchValue)`  
 Count of variables without pagination applied.  
