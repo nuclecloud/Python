@@ -15,69 +15,69 @@ First thing to do when using the library is to import it like bellow
 `from Nucle.Cloud import *`
 
 ### User
-- `Create(projectId,userName,email,password)`  
-Create new user, return the user created (UserModel).  
--  `Login(projectId,email,password )`  
-Login a user, return (LoginResult).  
-- `RevokeToken(userToken)`  
- Revoke a user token, return  (LoginResult).  
-- `SendResetPassword(projectId,email)`    
+- `UserModel Create(string projectId,string userName,string email,string password)`  
+Create new user, return the user created.  
+-  `LoginResult Login(string projectId,string email,string password )`  
+Login a user.  
+- `LoginResult RevokeToken(string userToken)`  
+ Revoke a user token.  
+- `SendResetPassword(string projectId,string email)`    
 Send password reset email to email user.  
-- `SendEmailConfirmation(projectId,email)`  
+- `SendEmailConfirmation(string projectId,string email)`  
 Send email confirmation to email user.  
-- `Upgrade(userToken,userName,email,password)`  
-Upgrade anonymous to real user, return upgraded user  (UserModel).  
-- `GetById(userToken,userId)`  
-Get user by id ,return user  (UserModel).  
-- `GetType(userToken)`  
-Get user type(REAL/ANONYMOUS/EXTERNALLOGIN), return type (string).  
-- `SetDisplayName(userToken,displayName)`  
-Set user displayName, return user  (UserModel).  
-- `GetGeolocalizationData(userToken)`  
-Get user geolocalization data , return (GeolocalizationModel).  
- - `Delete(userToken)`  
-Delete user, return deleted user  (UserModel).  
+- `UserModel Upgrade(string userToken,string userName,string email,string password)`  
+Upgrade anonymous to real user, return upgraded user.  
+- `UserModel GetById(string userToken,string userId)`  
+Get user by id.  
+- `string GetType(string userToken)`  
+Get user type(REAL/ANONYMOUS/EXTERNALLOGIN).  
+- `UserModel SetDisplayName(string userToken,string displayName)`  
+Set user displayName.  
+- `GeolocalizationModel GetGeolocalizationData(string userToken)`  
+Get user geolocalization data.  
+ - `UserModel Delete(string userToken)`  
+Delete user, return deleted user.  
  
 
 ### Anonymous 
 
     
 
- - `Login(projectId,deviceId)`  
-Login anonymous user, return (LoginResult).  
- - `Create(projectId,deviceId)`  
-Create anonymous user, return (LoginResult).  
+ - `LoginResult Login(string projectId,string deviceId)`  
+Login anonymous user.  
+ - `LoginResult Create(string projectId,string deviceId)`  
+Create anonymous user.  
 ### External Login
 
    
-- `Create(projectId,loginProvider,providerKey,providerDisplayName,userEmail,userName)`  
-Create external login, return (UserModel).   
-- `Login(projectId,loginProvider,providerKey)`  
-Login using external login, return (LoginResult).  
-- `Get(userToken,loginProvider,providerKey)`  
-Get external login, return (ExternalLoginModel).  
-- `Delete(userToken,loginProvider,providerKey)`  
-Delete external login, return deleted external login (ExternalLoginModel).  
+- `UserModel Create(string projectId,string loginProvider,string providerKey,string providerDisplayName,string userEmail,string userName)`  
+Create external login.   
+- `LoginResult Login(string projectId,string loginProvider,string providerKey)`  
+Login using external login.  
+- `ExternalLoginModel Get(string userToken,string loginProvider,string providerKey)`  
+Get external login.  
+- `ExternalLoginModel Delete(string userToken,string loginProvider,pstring roviderKey)`  
+Delete external login, return deleted external login.  
 
 ### Preset
- - `GetById(userToken,presetId)`  
-Get preset by id, return (PresetModel).  
- - `GetByName(userToken,presetName)`  
-Get preset by name, return (PresetModel).  
+ - `PresetModel GetById(string userToken,string presetId)`  
+Get preset by id.  
+ - `PresetModel GetByName(string userToken,string presetName)`  
+Get preset by name.  
 
 ### Variable
 
-- `Update(userToken,presetId, value)`  
- Update variable, if it does not exists this will create a new variable with the value provided, return (VariableModel).  
-- `Get(userToken,presetId)`  
- Get variable, return (VariableModel).   
-- `Delete(userToken,presetId)`  
-Delete variable, return deleted variable (VariableModel).  
-- `GetList(userToken,presetId,skip,take,orderType, searchValue)`  
- Get variables list, return (VariablesModel).  
+- `VariableModel Update(string userToken,string presetId, string value)`  
+ Update variable, if it does not exists this will create a new variable with the value provided.  
+- `VariableModel Get(string userToken,string presetId)`  
+ Get variable.   
+- `VariableModel Delete(string userToken,string presetId)`  
+Delete variable, return deleted variable.  
+- `VariablesModel GetList(string userToken,string presetId,int skip,int take,orderType orderType, string searchValue)`  
+ Get variables list.  
  *orderType:* (argument) enum  HighToLow=0, LowToHigh=1, Newest=2, Oldest=3.   
  *VariablesModel:* (return type )an object that contains a list of (VariableModel) and totalCount of variables without pagination applied. 
-- `Count(userToken,presetId, searchValue)`  
+- `int Count(string userToken,string presetId,string searchValue)`  
 Count of variables without pagination applied.  
 
 ## Example
