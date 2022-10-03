@@ -88,8 +88,8 @@ class User:
             print(f'Other error occurred: {err}')
 
     @staticmethod
-    def Login(projectId,email,password ) -> Models.LoginResult:
-        URL = "https://api.nucle.cloud/v1/user/login"
+    def LoginWithEmail(projectId,email,password ) -> Models.LoginResult:
+        URL = "https://api.nucle.cloud/v1/user/login/email"
         Headers = {
             "Content-Type": "application/json; charset=utf-8", "projectId": projectId}
         Json = {"email": email, "password": password}
@@ -109,6 +109,27 @@ class User:
         except Exception as err:
             print(f'Other error occurred: {err}')
 
+    @staticmethod
+    def LoginWithUserName(projectId,userName,password ) -> Models.LoginResult:
+        URL = "https://api.nucle.cloud/v1/user/login/username"
+        Headers = {
+            "Content-Type": "application/json; charset=utf-8", "projectId": projectId}
+        Json = {"userName": userName, "password": password}
+
+        try:
+            response = requests.post(url=URL, json=Json, headers=Headers)
+            response.raise_for_status()
+            r = response.json()
+
+            user = Models.UserModel(r.get('id'), r.get('userName'), r.get(
+                'displayName'), r.get('email'), r.get('creationDate'), r.get('lastLogin'))
+            result = Models.LoginResult(r.get('userToken'), user)
+            return result
+        except HTTPError as http_err:
+            errorMessage = http_err.response.json().get('errorMessage')
+            print(f'HTTP error occurred: {errorMessage}')
+        except Exception as err:
+            print(f'Other error occurred: {err}')
     @staticmethod
     def RevokeToken(userToken) -> Models.LoginResult:
         URL = "https://api.nucle.cloud/v1/user/revoketoken"
@@ -467,7 +488,7 @@ class Preset:
 
 class Variable:
     @staticmethod
-    def Update(userToken,presetId, value) -> Models.VariableModel:
+    def Update(userToken,presetId, value=None) -> Models.VariableModel:
         URL = "https://api.nucle.cloud/v1/variable/update"
         Headers = {
             "Content-Type": "application/json; charset=utf-8", "userToken": userToken}

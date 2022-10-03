@@ -17,8 +17,10 @@ First thing to do when using the library is to import it like bellow
 ### User
 - `UserModel Create(string projectId,string userName,string email,string password)`  
 Create new user, return the user created.  
--  `LoginResult Login(string projectId,string email,string password )`  
-Login a user.  
+-  `LoginResult LoginWithEmail(string projectId,string email,string password )`  
+Login a user with email.  
+-  `LoginResult LoginWithUserName(string projectId,string userName,string password )`  
+Login a user with userName.  
 - `LoginResult RevokeToken(string userToken)`  
  Revoke a user token.  
 - `SendResetPassword(string projectId,string email)`    
@@ -98,7 +100,7 @@ Project Id to get from [Nucle.cloud](https://nucle.cloud) dashboard.
 from Nucle.Cloud import *
 
 projectId ='b943b785-********************8ec173'
-loginResult = User.Login(projectId,'ross88@gmail.com', 'P@ssw0rd')
+loginResult = User.LoginWithEmail(projectId,'ross88@gmail.com', 'P@ssw0rd')
 print('User token= '+loginResult.userToken)
 ```
 
